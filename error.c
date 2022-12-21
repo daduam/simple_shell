@@ -7,7 +7,7 @@
  */
 void _perror(void)
 {
-	char *exec_name = _getenv("_");
+	char *exec_name = "./shell";
 
 	perror(exec_name);
 }
