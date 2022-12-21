@@ -21,6 +21,11 @@ int read_cmd(char **cmd)
 	while (1)
 	{
 		nbytes = read(STDIN_FILENO, &ch, 1);
+		if (nbytes == -1)
+		{
+			_perror();
+			exit(1);
+		}
 		if (nbytes == 0)
 			return (-1);
 		if (ch == '\n')
@@ -58,7 +63,11 @@ int handle_cmd(char *cmd)
 	}
 	else
 	{
-		waitpid(cpid, &wstatus, WUNTRACED);
+		if (waitpid(cpid, &wstatus, WUNTRACED) == -1)
+		{
+			_perror();
+			exit(1);
+		}
 	}
 	return (1);
 }

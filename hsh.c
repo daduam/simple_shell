@@ -11,7 +11,14 @@
  */
 int main(void)
 {
-	char *cmd = malloc(1024);
+	char *cmd;
+
+	cmd = malloc(1024);
+	if (cmd == NULL)
+	{
+		_perror();
+		return (1);
+	}
 
 	while (1)
 	{

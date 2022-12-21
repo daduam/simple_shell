@@ -1,4 +1,3 @@
-#include "stdio.h"
 #include "unistd.h"
 
 #include "hsh.h"
@@ -9,7 +8,8 @@
 void render_prompt(void)
 {
 	if (isatty(STDIN_FILENO))
-		write(STDIN_FILENO, PROMPT, sizeof(PROMPT));
+		if (write(STDIN_FILENO, PROMPT, sizeof(PROMPT)) == -1)
+			_perror();
 }
 
 /**
@@ -18,5 +18,6 @@ void render_prompt(void)
 void handle_eof(void)
 {
 	if (isatty(STDIN_FILENO))
-		write(STDIN_FILENO, "\n", 1);
+		if (write(STDIN_FILENO, "\n", 1))
+			_perror();
 }
