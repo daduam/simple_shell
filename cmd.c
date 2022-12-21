@@ -17,7 +17,6 @@ int read_cmd(char **cmd)
 	int nbytes;
 	char ch, *p;
 
-	*cmd = malloc(1024);
 	p = *cmd;
 	while (1)
 	{

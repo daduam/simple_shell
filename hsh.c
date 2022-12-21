@@ -11,7 +11,7 @@
  */
 int main(void)
 {
-	char *cmd;
+	char *cmd = malloc(1024);
 
 	while (1)
 	{
